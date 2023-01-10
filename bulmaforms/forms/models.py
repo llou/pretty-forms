@@ -4,10 +4,9 @@ from django.db import models
 from .renderers import DjangoTemplates
 from .utils import ErrorList
 from . import widgets
-from bulmaforms.forms import forms
+from bulmaforms.forms import forms as bulmaforms
 from bulmaforms.forms import fields as bulmafields
 
-import pdb; pdb.set_trace()
 
 EQUIVALENCES_MODEL_FORM = {
     models.CharField: bulmafields.CharField(),
@@ -28,7 +27,7 @@ def formfield_callback(model_field, **kwargs):
         return field
     return None
 
-class BaseModelForm(forms.BaseForm, AltersData):
+class BaseModelForm(bulmaforms.BaseForm, AltersData):
     def __init__(
         self,
         data=None,
@@ -77,7 +76,6 @@ class BaseModelForm(forms.BaseForm, AltersData):
 
 class ModelForm(BaseModelForm, metaclass=forms_models.ModelFormMetaclass):
     pass
-
 
 class ModelChoiceIterator(forms_models.ModelChoiceIterator):
     pass
