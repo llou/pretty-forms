@@ -2,6 +2,10 @@ from bulmaforms.forms import widgets
 from django.forms import fields
 from django.forms.fields import DateTimeFormatsIterator, CallableChoiceIterator
 
+"""
+Estos son para usarlos directamente en formularios manuales
+"""
+
 
 class Field(fields.Field):
     widget = widgets.TextInput
@@ -9,6 +13,10 @@ class Field(fields.Field):
 
 class CharField(fields.CharField):
     widget = widgets.TextInput
+
+
+class TextField(fields.CharField):
+    widget = widgets.Textarea
 
 
 class IntegerField(fields.IntegerField):

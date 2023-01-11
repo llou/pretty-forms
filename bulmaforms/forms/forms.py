@@ -31,7 +31,7 @@ class BaseForm(BulmaFormMixin, forms.BaseForm):
                 error_class=error_class, label_suffix=label_suffix,
                 empty_permitted=empty_permitted, field_order=field_order,
                 use_required_attribute=use_required_attribute, 
-                renderer=renderer)
+                renderer=renderer, initial=initial)
 
 class Form(BaseForm, metaclass=forms.DeclarativeFieldsMetaclass):
     pass

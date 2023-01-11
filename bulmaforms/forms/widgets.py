@@ -1,5 +1,4 @@
 from django.forms import widgets
-from django.forms.widgets import CheckboxInput
 
 class InputMixin:
     template_name = "bulma/widgets/input.html"
@@ -13,6 +12,10 @@ class InputMixin:
             else:
                 attrs["class"] = "input" 
         super().__init__(attrs=attrs)
+
+
+class CheckboxInput(widgets.CheckboxInput):
+    template_name = "bulma/widgets/checkbox.html"
 
 
 class TextInput(InputMixin, widgets.TextInput):
@@ -47,11 +50,13 @@ class FileInput(InputMixin, widgets.FileInput):
     template_name = "bulma/widgets/file.html"
 
 
-class ClearableFileInput(FileInput, widgets.FileInput):
+class ClearableFileInput(InputMixin, widgets.ClearableFileInput):
     template_name = "bulma/widgets/file.html"
 
 
-class TextareaInput(widgets.Textarea):
+class Textarea(widgets.Textarea):
+    template_name = "bulma/widgets/textarea.html"
+
     def __init__(self, attrs=None):
         if attrs is None:
             attrs = {"class" : "textarea"}
