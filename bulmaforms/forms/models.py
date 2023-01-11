@@ -35,6 +35,9 @@ def formfield_callback(model_field, **kwargs):
     elif cls == models.CharField:
         return model_field.formfield(form_class=bulmafields.CharField, 
                 choices_form_class=bulmafields.TypedChoiceField, **kwargs)
+    elif cls == models.DecimalField:
+        return model_field.formfield(form_class=bulmafields.DecimalField, 
+                choices_form_class=bulmafields.TypedChoiceField, **kwargs)
     elif cls == models.IntegerField:
         return model_field.formfield(form_class=bulmafields.IntegerField, 
                 choices_form_class=bulmafields.TypedChoiceField, **kwargs)
@@ -249,7 +252,7 @@ class ModelFormMetaclass(DeclarativeFieldsMetaclass):
 
 
 
-class BaseModelForm(bulmaforms.BaseForm):
+class BaseModelForm(bulmaforms.BulmaFormMixin, forms_models.BaseModelForm):
     def __init__(
         self,
         data=None,
