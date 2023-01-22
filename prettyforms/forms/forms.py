@@ -3,16 +3,16 @@ from .utils import ErrorList
 from django.forms import forms 
 
 
-class BulmaFormMixin:
+class PrettyFormMixin:
     default_renderer = DjangoTemplates()
-    template_name_div = "bulma/div.html"
-    template_name_p = "bulma/p.html"
-    template_name_table = "bulma/table.html"
-    template_name_ul = "bulma/ul.html"
-    template_name_label = "bulma/label.html"
+    template_name_div = "pretty/div.html"
+    template_name_p = "pretty/p.html"
+    template_name_table = "pretty/table.html"
+    template_name_ul = "pretty/ul.html"
+    template_name_label = "pretty/label.html"
 
 
-class BaseForm(BulmaFormMixin, forms.BaseForm):
+class BaseForm(PrettyFormMixin, forms.BaseForm):
     def __init__(
         self,
         data=None,

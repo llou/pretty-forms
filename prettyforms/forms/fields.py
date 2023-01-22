@@ -1,4 +1,4 @@
-from bulmaforms.forms import widgets
+from prettyforms.forms import widgets
 from django.forms import fields
 from django.forms.fields import DateTimeFormatsIterator, CallableChoiceIterator
 

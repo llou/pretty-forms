@@ -2,15 +2,15 @@ from setuptools import setup, find_packages
 
 setup(
         name="pretty-forms",
-        version="0.0",
+        version="0.0.1",
         license="BSD",
-        author="Jorge Monforte",
-        author_email="jorge.monforte@gmail.com",
+        author="Jorge Monforte González",
+        author_email="yo@llou.net",
         packages=find_packages("."),
         package_dir={'':'.'},
-        url="",
+        url="https://github.com/llou/pretty-forms",
         keywords="django bulma",
-        install_requires=[],
+        install_requires=['django'],
 )
 
 

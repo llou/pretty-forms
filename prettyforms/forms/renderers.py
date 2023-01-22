@@ -10,8 +10,8 @@ def get_default_renderer():
 
 
 class BaseRenderer(renderers.BaseRenderer):
-    form_template_name = "bulma/default.html"
-    formset_template_name = "bulma/formsets/default.html"
+    form_template_name = "pretty/default.html"
+    formset_template_name = "pretty/formsets/default.html"
 
 
 class EngineMixin:
@@ -24,7 +24,7 @@ class EngineMixin:
                 {
                     "APP_DIRS": True,
                     "DIRS": [Path(__file__).parent.parent / "templates"],
-                    "NAME": "bulmaforms",
+                    "NAME": "prettyforms",
                     "OPTIONS": {},
                     }
                 )
@@ -35,5 +35,5 @@ class DjangoTemplates(EngineMixin, BaseRenderer):
 
 
 class DjangoDivFormRenderer(DjangoTemplates):
-    form_template_name = "bulma/div.html"
-    formset_template_name = "bulma/formsets/div.html"
+    form_template_name = "pretty/div.html"
+    formset_template_name = "pretty/formsets/div.html"

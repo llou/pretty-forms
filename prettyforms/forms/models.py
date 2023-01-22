@@ -2,79 +2,79 @@ from itertools import chain
 from django.forms import models as forms_models
 from django.forms.forms import DeclarativeFieldsMetaclass
 from django.db import models
-from bulmaforms.forms.renderers import DjangoTemplates
-from bulmaforms.forms.utils import ErrorList
-from bulmaforms.forms import widgets
-from bulmaforms.forms import forms as bulmaforms
-from bulmaforms.forms import fields as bulmafields
+from prettyforms.forms.renderers import DjangoTemplates
+from prettyforms.forms.utils import ErrorList
+from prettyforms.forms import widgets
+from prettyforms.forms import forms as prettyforms
+from prettyforms.forms import fields as prettyfields
 
 
 EQUIVALENCES_MODEL_FORM = {
-    models.TextField: bulmafields.TextField,
-    models.CharField: bulmafields.CharField,
-    models.IntegerField: bulmafields.IntegerField,
-    models.FloatField: bulmafields.FloatField,
-    models.DateField: bulmafields.DateField,
-    models.TimeField: bulmafields.TimeField,
-    models.DateTimeField: bulmafields.DateTimeField,
-    models.DurationField: bulmafields.DurationField,
-    models.EmailField: bulmafields.EmailField,
-    models.FileField: bulmafields.FileField,
-    models.ImageField: bulmafields.ImageField,
-    models.BooleanField: bulmafields.BooleanField,
-    models.ManyToManyField: bulmafields.MultipleChoiceField,
+    models.TextField: prettyfields.TextField,
+    models.CharField: prettyfields.CharField,
+    models.IntegerField: prettyfields.IntegerField,
+    models.FloatField: prettyfields.FloatField,
+    models.DateField: prettyfields.DateField,
+    models.TimeField: prettyfields.TimeField,
+    models.DateTimeField: prettyfields.DateTimeField,
+    models.DurationField: prettyfields.DurationField,
+    models.EmailField: prettyfields.EmailField,
+    models.FileField: prettyfields.FileField,
+    models.ImageField: prettyfields.ImageField,
+    models.BooleanField: prettyfields.BooleanField,
+    models.ManyToManyField: prettyfields.MultipleChoiceField,
     }
 
 
 def formfield_callback(model_field, **kwargs):
     cls = model_field.__class__
     if cls == models.TextField:
-        ff = model_field.formfield(form_class=bulmafields.TextField, 
-                choices_form_class=bulmafields.TypedChoiceField, **kwargs)
+        ff = model_field.formfield(form_class=prettyfields.TextField, 
+                choices_form_class=prettyfields.TypedChoiceField, **kwargs)
         ff.widget = widgets.Textarea(**kwargs)
         return ff
     elif cls == models.CharField:
-        return model_field.formfield(form_class=bulmafields.CharField, 
-                choices_form_class=bulmafields.TypedChoiceField, **kwargs)
+        return model_field.formfield(form_class=prettyfields.CharField, 
+                choices_form_class=prettyfields.TypedChoiceField, **kwargs)
     elif cls == models.DecimalField:
-        return model_field.formfield(form_class=bulmafields.DecimalField, 
-                choices_form_class=bulmafields.TypedChoiceField, **kwargs)
+        return model_field.formfield(form_class=prettyfields.DecimalField, 
+                choices_form_class=prettyfields.TypedChoiceField, **kwargs)
     elif cls == models.IntegerField:
-        return model_field.formfield(form_class=bulmafields.IntegerField, 
-                choices_form_class=bulmafields.TypedChoiceField, **kwargs)
+        return model_field.formfield(form_class=prettyfields.IntegerField, 
+                choices_form_class=prettyfields.TypedChoiceField, **kwargs)
     elif cls == models.BigAutoField:
-        return model_field.formfield(form_class=bulmafields.IntegerField, 
+        return model_field.formfield(form_class=prettyfields.IntegerField, 
                 **kwargs)
     elif cls == models.PositiveIntegerField:
-        return model_field.formfield(form_class=bulmafields.PositiveIntegerField, 
-                choices_form_class=bulmafields.TypedChoiceField, **kwargs)
+        return model_field.formfield(form_class=prettyfields.PositiveIntegerField, 
+                choices_form_class=prettyfields.TypedChoiceField, **kwargs)
     elif cls == models.FloatField:
-        return model_field.formfield(form_class=bulmafields.FloatField, 
-                choices_form_class=bulmafields.TypedChoiceField, **kwargs)
+        return model_field.formfield(form_class=prettyfields.FloatField, 
+                choices_form_class=prettyfields.TypedChoiceField, **kwargs)
     elif cls == models.DateField:
-        return model_field.formfield(form_class=bulmafields.DateField, 
-                choices_form_class=bulmafields.TypedChoiceField, **kwargs)
+        return model_field.formfield(form_class=prettyfields.DateField, 
+                choices_form_class=prettyfields.TypedChoiceField, **kwargs)
     elif cls == models.TimeField:
-        return model_field.formfield(form_class=bulmafields.TimeField, 
-                choices_form_class=bulmafields.TypedChoiceField, **kwargs)
+        return model_field.formfield(form_class=prettyfields.TimeField, 
+                choices_form_class=prettyfields.TypedChoiceField, **kwargs)
     elif cls == models.DateTimeField:
-        return model_field.formfield(form_class=bulmafields.DateTimeField, 
-                choices_form_class=bulmafields.TypedChoiceField, **kwargs)
+        return model_field.formfield(form_class=prettyfields.DateTimeField, 
+                choices_form_class=prettyfields.TypedChoiceField, **kwargs)
     elif cls == models.DurationField:
-        return model_field.formfield(form_class=bulmafields.DurationField, 
-                choices_form_class=bulmafields.TypedChoiceField, **kwargs)
+        return model_field.formfield(form_class=prettyfields.DurationField, 
+                choices_form_class=prettyfields.TypedChoiceField, **kwargs)
     elif cls == models.EmailField:
-        return model_field.formfield(form_class=bulmafields.EmailField, 
-                choices_form_class=bulmafields.TypedChoiceField, **kwargs)
+        return model_field.formfield(form_class=prettyfields.EmailField, 
+                choices_form_class=prettyfields.TypedChoiceField, **kwargs)
     elif cls == models.FileField:
-        return model_field.formfield(form_class=bulmafields.FileField, 
-                choices_form_class=bulmafields.TypedChoiceField, **kwargs)
+        return model_field.formfield(form_class=prettyfields.FileField, 
+                choices_form_class=prettyfields.TypedChoiceField, **kwargs)
     elif cls == models.ImageField:
-        return model_field.formfield(form_class=bulmafields.ImageField, 
-                choices_form_class=bulmafields.TypedChoiceField, **kwargs)
+        return model_field.formfield(form_class=prettyfields.ImageField, 
+                choices_form_class=prettyfields.TypedChoiceField, **kwargs)
     elif cls == models.BooleanField:
-        return model_field.formfield(form_class=bulmafields.BooleanField, 
-                choices_form_class=bulmafields.TypedChoiceField, **kwargs)
+        return model_field.formfield(form_class=prettyfields.BooleanField, 
+                choices_form_class=prettyfields.TypedChoiceField, **kwargs)
     elif cls == models.ManyToManyField:
         return model_field.formfield(form_class=ModelMultipleChoiceField,
                 **kwargs)
@@ -262,7 +262,7 @@ class ModelFormMetaclass(DeclarativeFieldsMetaclass):
 
 
 
-class BaseModelForm(bulmaforms.BulmaFormMixin, forms_models.BaseModelForm):
+class BaseModelForm(prettyforms.PrettyFormMixin, forms_models.BaseModelForm):
     def __init__(
         self,
         data=None,

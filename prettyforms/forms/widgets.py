@@ -1,7 +1,7 @@
 from django.forms import widgets
 
 class InputMixin:
-    template_name = "bulma/widgets/input.html"
+    template_name = "pretty/widgets/input.html"
 
     def __init__(self, attrs=None):
         if attrs is None:
@@ -15,47 +15,47 @@ class InputMixin:
 
 
 class CheckboxInput(widgets.CheckboxInput):
-    template_name = "bulma/widgets/checkbox.html"
+    template_name = "pretty/widgets/checkbox.html"
 
 
 class TextInput(InputMixin, widgets.TextInput):
-    template_name = "bulma/widgets/input.html"
+    template_name = "pretty/widgets/input.html"
 
 
 class NumberInput(InputMixin, widgets.NumberInput):
-    template_name = "bulma/widgets/number.html"
+    template_name = "pretty/widgets/number.html"
 
 
 class EmailInput(InputMixin, widgets.EmailInput):
-    template_name = "bulma/widgets/email.html"
+    template_name = "pretty/widgets/email.html"
 
 
 class URLInput(InputMixin, widgets.URLInput):
-    template_name = "bulma/widgets/url.html"
+    template_name = "pretty/widgets/url.html"
 
 
 class PasswordInput(InputMixin, widgets.PasswordInput):
-    template_name = "bulma/widgets/password.html"
+    template_name = "pretty/widgets/password.html"
 
 
 class HiddenInput(InputMixin, widgets.HiddenInput):
-    template_name = "bulma/widgets/hidden.html"
+    template_name = "pretty/widgets/hidden.html"
 
 
 class MultipleHiddenInput(HiddenInput, widgets.HiddenInput):
-    template_name = "bulma/widgets/hidden.html"
+    template_name = "pretty/widgets/hidden.html"
 
 
 class FileInput(InputMixin, widgets.FileInput):
-    template_name = "bulma/widgets/file.html"
+    template_name = "pretty/widgets/file.html"
 
 
 class ClearableFileInput(InputMixin, widgets.ClearableFileInput):
-    template_name = "bulma/widgets/file.html"
+    template_name = "pretty/widgets/file.html"
 
 
 class Textarea(widgets.Textarea):
-    template_name = "bulma/widgets/textarea.html"
+    template_name = "pretty/widgets/textarea.html"
 
     def __init__(self, attrs=None):
         if attrs is None:
@@ -86,36 +86,36 @@ class TimeInput(DateTimeBaseInput, widgets.TimeInput):
 
 
 class Select(widgets.Select):
-    template_name = "bulma/widgets/select.html"
-    option_template_name = "bulma/widgets/select_option.html"
+    template_name = "pretty/widgets/select.html"
+    option_template_name = "pretty/widgets/select_option.html"
 
 
 class SelectMultiple(widgets.SelectMultiple):
-    template_name = "bulma/widgets/select_multiple.html"
-    option_template_name = "bulma/widgets/select_option.html"
+    template_name = "pretty/widgets/select_multiple.html"
+    option_template_name = "pretty/widgets/select_option.html"
 
 
 class RadioSelect(widgets.RadioSelect):
-    template_name = "bulma/widgets/radio.html"
-    option_template_name = "bulma/widgets/radio_option.html"
+    template_name = "pretty/widgets/radio.html"
+    option_template_name = "pretty/widgets/radio_option.html"
 
 
 class CheckboxSelectMultiple(widgets.CheckboxSelectMultiple):
-    template_name = "bulma/widgets/checkbox_select.html"
-    option_template_name = "bulma/widgets/checkbox_option.html"
+    template_name = "pretty/widgets/checkbox_select.html"
+    option_template_name = "pretty/widgets/checkbox_option.html"
 
 
 class MultiWidget(widgets.MultiWidget):
-    template_name = "bulma/widgets/multiwidget.html"
+    template_name = "pretty/widgets/multiwidget.html"
     
 
 class SplitDateTimeWidget(widgets.SplitDateTimeWidget):
-    template_name = "bulma/widgets/splitdatetime.html"
+    template_name = "pretty/widgets/splitdatetime.html"
 
 
 class SplitHiddenDateTimeWidget(widgets.SplitHiddenDateTimeWidget):
-    template_name = "bulma/widgets/splithiddendatetime.html"
+    template_name = "pretty/widgets/splithiddendatetime.html"
 
 
 class SelectDateWidget(widgets.SelectDateWidget):
-    template_name = "bulma/widgets/select_date.html"
+    template_name = "pretty/widgets/select_date.html"
