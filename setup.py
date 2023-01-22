@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
         name="pretty-forms",
-        version="0.0.1",
+        version="0.0.2",
         license="BSD",
         author="Jorge Monforte González",
         author_email="yo@llou.net",

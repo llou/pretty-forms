@@ -8,24 +8,6 @@ from prettyforms.forms import widgets
 from prettyforms.forms import forms as prettyforms
 from prettyforms.forms import fields as prettyfields
 
-
-EQUIVALENCES_MODEL_FORM = {
-    models.TextField: prettyfields.TextField,
-    models.CharField: prettyfields.CharField,
-    models.IntegerField: prettyfields.IntegerField,
-    models.FloatField: prettyfields.FloatField,
-    models.DateField: prettyfields.DateField,
-    models.TimeField: prettyfields.TimeField,
-    models.DateTimeField: prettyfields.DateTimeField,
-    models.DurationField: prettyfields.DurationField,
-    models.EmailField: prettyfields.EmailField,
-    models.FileField: prettyfields.FileField,
-    models.ImageField: prettyfields.ImageField,
-    models.BooleanField: prettyfields.BooleanField,
-    models.ManyToManyField: prettyfields.MultipleChoiceField,
-    }
-
-
 def formfield_callback(model_field, **kwargs):
     cls = model_field.__class__
     if cls == models.TextField:
@@ -305,6 +287,7 @@ class BaseModelForm(prettyforms.PrettyFormMixin, forms_models.BaseModelForm):
             empty_permitted,
             use_required_attribute=use_required_attribute,
             renderer=renderer,
+            instance=instance,
         )
         for formfield in self.fields.values():
             forms_models.apply_limit_choices_to_to_formfield(formfield)
