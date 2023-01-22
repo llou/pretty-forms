@@ -23,6 +23,10 @@ class IntegerField(fields.IntegerField):
     widget = widgets.NumberInput
 
 
+class PositiveIntegerField(fields.IntegerField):
+    widget = widgets.NumberInput
+
+
 class FloatField(fields.FloatField):
     widget = widgets.NumberInput
 

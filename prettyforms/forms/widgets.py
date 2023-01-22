@@ -91,7 +91,7 @@ class Select(widgets.Select):
 
 
 class SelectMultiple(widgets.SelectMultiple):
-    template_name = "bulma/widgets/select.html"
+    template_name = "bulma/widgets/select_multiple.html"
     option_template_name = "bulma/widgets/select_option.html"
 
 

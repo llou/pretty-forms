@@ -22,6 +22,7 @@ EQUIVALENCES_MODEL_FORM = {
     models.FileField: bulmafields.FileField,
     models.ImageField: bulmafields.ImageField,
     models.BooleanField: bulmafields.BooleanField,
+    models.ManyToManyField: bulmafields.MultipleChoiceField,
     }
 
 
@@ -40,6 +41,12 @@ def formfield_callback(model_field, **kwargs):
                 choices_form_class=bulmafields.TypedChoiceField, **kwargs)
     elif cls == models.IntegerField:
         return model_field.formfield(form_class=bulmafields.IntegerField, 
+                choices_form_class=bulmafields.TypedChoiceField, **kwargs)
+    elif cls == models.BigAutoField:
+        return model_field.formfield(form_class=bulmafields.IntegerField, 
+                **kwargs)
+    elif cls == models.PositiveIntegerField:
+        return model_field.formfield(form_class=bulmafields.PositiveIntegerField, 
                 choices_form_class=bulmafields.TypedChoiceField, **kwargs)
     elif cls == models.FloatField:
         return model_field.formfield(form_class=bulmafields.FloatField, 
@@ -68,7 +75,14 @@ def formfield_callback(model_field, **kwargs):
     elif cls == models.BooleanField:
         return model_field.formfield(form_class=bulmafields.BooleanField, 
                 choices_form_class=bulmafields.TypedChoiceField, **kwargs)
+    elif cls == models.ManyToManyField:
+        return model_field.formfield(form_class=ModelMultipleChoiceField,
+                **kwargs)
+    elif cls == models.ForeignKey:
+        return model_field.formfield(form_class=ModelChoiceField,
+                **kwargs)
     else:
+        print("No traga " + str(cls))
         return None
 
 def fields_for_model(
@@ -158,8 +172,6 @@ def fields_for_model(
 
 
         formfield = formfield_callback(f, **kwargs)
-        if formfield:
-            print(formfield.widget)
 
         if formfield:
             if apply_limit_choices_to:
@@ -173,8 +185,6 @@ def fields_for_model(
             for f in fields
             if (not exclude or f not in exclude) and f not in ignored
         }
-    print("Ignoraditos")
-    print(ignored)
     return field_dict
 
 
