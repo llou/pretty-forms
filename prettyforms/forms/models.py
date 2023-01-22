@@ -58,10 +58,10 @@ def formfield_callback(model_field, **kwargs):
         return model_field.formfield(form_class=prettyfields.BooleanField, 
                 choices_form_class=prettyfields.TypedChoiceField, **kwargs)
     elif cls == models.ManyToManyField:
-        return model_field.formfield(form_class=ModelMultipleChoiceField,
+        return model_field.formfield(form_class=PrettyModelMultipleChoiceField,
                 **kwargs)
     elif cls == models.ForeignKey:
-        return model_field.formfield(form_class=ModelChoiceField,
+        return model_field.formfield(form_class=PrettyModelChoiceField,
                 **kwargs)
     else:
         print("No traga " + str(cls))
@@ -293,7 +293,7 @@ class BaseModelForm(prettyforms.PrettyFormMixin, forms_models.BaseModelForm):
             forms_models.apply_limit_choices_to_to_formfield(formfield)
 
 
-class ModelForm(BaseModelForm, metaclass=ModelFormMetaclass):
+class PrettyModelForm(BaseModelForm, metaclass=ModelFormMetaclass):
     pass
 
 
@@ -301,14 +301,18 @@ class ModelChoiceIterator(forms_models.ModelChoiceIterator):
     pass
 
 
-class InlineForeignKeyField(forms_models.InlineForeignKeyField):
+class PrettyInlineForeignKeyField(forms_models.InlineForeignKeyField):
     widget = widgets.HiddenInput
 
 
-class ModelChoiceField(forms_models.ModelChoiceField):
+class PrettyModelChoiceField(forms_models.ModelChoiceField):
     widget = widgets.Select
     
-
-class ModelMultipleChoiceField(forms_models.ModelChoiceField):
+class PrettyModelMultipleChoiceField(forms_models.ModelMultipleChoiceField):
     widget = widgets.SelectMultiple
     hidden_widget = widgets.MultipleHiddenInput
+
+    def to_python(self, value):
+        print("Una limosna para un exleproso")
+        return super().to_python(value)
+

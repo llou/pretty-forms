@@ -33,5 +33,5 @@ class BaseForm(PrettyFormMixin, forms.BaseForm):
                 use_required_attribute=use_required_attribute, 
                 renderer=renderer, initial=initial)
 
-class Form(BaseForm, metaclass=forms.DeclarativeFieldsMetaclass):
+class PrettyForm(BaseForm, metaclass=forms.DeclarativeFieldsMetaclass):
     pass
